@@ -43,10 +43,10 @@ double **low_rank_approximation(double **A, int p, int q, int k) {
 	double **Vt = transpose(V, q, k);
 
 	// solve for U
-    // U=AVΣ⁻¹
-    double **AV = multiply(A, V, p, q, k);
+	// U=AVΣ⁻¹
+	double **AV = multiply(A, V, p, q, k);
 	double **S_inv = diagonal_inverse(S, k);
-    double **U = multiply(AV, S_inv, p, k, k);
+	double **U = multiply(AV, S_inv, p, k, k);
 
 	// calculate compressed A
  	// Aₖ=UΣVᵀ
@@ -61,15 +61,15 @@ double **low_rank_approximation(double **A, int p, int q, int k) {
 	print_matrix("Vt", Vt, k, q);
 
 	// cleanup
-    free_matrix(At, q);
-    free_matrix(AtA, q);
-    free_matrix(S, k);
-    free_matrix(V, q);
-    free_matrix(Vt, k);
-    free_matrix(AV, p);
-    free_matrix(S_inv, k);
-    free_matrix(U, p);
-    free_matrix(US, p);
+	free_matrix(At, q);
+	free_matrix(AtA, q);
+	free_matrix(S, k);
+	free_matrix(V, q);
+	free_matrix(Vt, k);
+	free_matrix(AV, p);
+	free_matrix(S_inv, k);
+	free_matrix(U, p);
+	free_matrix(US, p);
 
 	return Ak;
 }
